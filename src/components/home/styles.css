@@ -1,0 +1,14 @@
+.homepage {
+  margin: 0 auto;
+}
+
+#signup-btn {
+  width: 200px;
+  height: 70px;
+  font: 800 1.3rem Mukta;
+  background-color: #C0C0C0;
+  border-radius: 6px;
+  border: 1px solid #696969;
+  color: #4F4F4F;
+  cursor: pointer;
+}
