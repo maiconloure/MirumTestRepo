@@ -2,48 +2,56 @@ import React, { useState } from "react";
 import "./styles.css";
 import { Field, Select, InputTags } from "components";
 import { states } from "../../utils/data";
+import getImage from "../../utils/getImage";
+import { useHistory } from "react-router-dom";
 
-const SignUp = ({ history }) => {
-  const [value, setValue] = useState(2);
+const SignUp = ({ setData }) => {
+  let history = useHistory();
   const [image, setImage] = useState();
   const [showAdress, setShowAdress] = useState(false);
   const [interests, setInterests] = useState([]);
 
-  const getImageFile = (event) => {
-    event.preventDefault();
-    if (event.target.files[0] !== undefined) {
-      var reader = new FileReader();
-      reader.onload = () => {
-        if (reader.readyState === 2) {
-          setImage(reader.result);
-        }
-      };
-      reader.readAsDataURL(event.target.files[0]);
-    }
-  };
-
-  const onFinish = (event) => {
-    event.preventDefault();
-    console.log(event.target);
+  const onFinish = (evt) => {
+    evt.preventDefault();
+    const data = evt.target;
+    const userData = {
+      image: image,
+      name: data[1].value + " " + data[2].value,
+      age: parseInt(data[3].value),
+      email: data[4].value,
+      telephone: data[5].value,
+      state: data[6].options[data[6].selectedIndex].text,
+      country: data[7].options[data[7].selectedIndex].text,
+      address: data[9].value,
+      interests:
+        interests.slice(0, interests.length - 1).join(", ") +
+        " e " +
+        interests.slice(interests.length - 1, interests.length),
+      newsletter: data[10].checked,
+    };
+    setData(userData);
     history.push("/profile");
   };
 
   return (
     <main className="signup-container">
-      <form onSubmit={(values) => onFinish(values)}>
+      <form onSubmit={(evt) => onFinish(evt)}>
         <div className="block1">
           <figure className="image-area">
-            <label htmlFor="image-upload">Carregue sua foto</label>
+            {image ? (
+              <label htmlFor="image-upload">Foto carregada!</label>
+            ) : (
+              <label htmlFor="image-upload">Carregue sua foto</label>
+            )}
             <input
               type="file"
               name="image-upload"
               accept="image/*"
               className="image-upload"
               onChange={(event) => {
-                getImageFile(event);
+                getImage(event, setImage);
               }}
             />
-            {image && <img id="image-uploaded" src={image} alt="Not found" />}
           </figure>
 
           <hr className="line" />
@@ -71,19 +79,15 @@ const SignUp = ({ history }) => {
               <input
                 className="slider"
                 type="range"
-                min="1"
-                max="4"
-                value={value}
-                onChange={(evt) => {
-                  setValue(evt.target.value);
-                }}
+                min="0"
+                max="3"
                 list="ages"
               ></input>
               <datalist id="ages">
-                <option value="1" label="13-19" />
-                <option value="2" label="20-29" />
-                <option value="3" label="30-45" />
-                <option value="4" label="45 e acima" />
+                <option value="0" label="13-19" />
+                <option value="1" label="20-29" />
+                <option value="2" label="30-45" />
+                <option value="3" label="45 e acima" />
               </datalist>
             </div>
           </div>
@@ -126,6 +130,7 @@ const SignUp = ({ history }) => {
               }}
               options={["Selecione", "Casa", "Empresa"]}
             />
+
             {showAdress && (
               <input
                 id="default"
@@ -149,7 +154,12 @@ const SignUp = ({ history }) => {
             <p>Desejo receber novidades por e-mail.</p>
           </div>
 
-          <input id="submit" type="submit" value="Salvar" />
+          <input
+            // onClick={(evt) => onFinish(evt)}
+            id="submit"
+            type="submit"
+            value="Salvar"
+          />
         </div>
       </form>
     </main>

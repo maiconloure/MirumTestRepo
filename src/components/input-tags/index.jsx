@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from "react";
 import "./styles.css";
 
-const InputTags = ({ label, name, inputs }) => {
-  const [interests, setInterests] = useState([]);
+const InputTags = ({ label, name, interests, setInterests, inputs }) => {
   const [value, setValue] = useState("");
 
   useEffect(() => {
     if (value.includes(",")) {
-      const tags = value.split(",").map((tag) => tag.trim());
+      console.log(interests);
+      const tags = value
+        .split(",")
+        .map((tag) => tag.trim())
+        .filter((tag) => tag !== "");
       setInterests(tags);
+    } else {
+      setInterests([]);
     }
   }, [value]);
 
@@ -16,6 +21,7 @@ const InputTags = ({ label, name, inputs }) => {
     interests.splice(index, 1);
     setValue(interests.join());
   };
+
   return (
     <div>
       <div className="field">
