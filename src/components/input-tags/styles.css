@@ -1,0 +1,45 @@
+.field {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+}
+.field label {
+  width: 120px;
+  margin-right: 16px;
+  font: 800 1.2rem Mukta;
+  color: #696969;
+  text-align: right;
+}
+
+#default {
+  height: 24px;
+  font: 400 1.2rem Mukta;
+  border: 1px solid #696969;
+  border-radius: none;
+  padding: 5px 10px;
+  outline: none;
+  width: 430px;
+}
+.interests-list {
+  margin-left: 136px;
+  display: flex;
+}
+
+#tag {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 10px;
+  width: 90px;
+  height: 25px;
+  background: #C0C0C0;
+  border: 1px solid #696969;
+  margin-right: 10px;
+  font: 400 0.9rem Mukta;
+  color: #4F4F4F;
+}
+
+#tag p {
+  font: 800 1rem Mukta;
+  cursor: pointer;
+}

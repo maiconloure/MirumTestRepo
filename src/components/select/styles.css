@@ -1,0 +1,25 @@
+.field {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+}
+.field label {
+  width: 120px;
+  margin-right: 16px;
+  font: 800 1.2rem Mukta;
+  color: #696969;
+  text-align: right;
+}
+
+#form-select-input {
+  text-align: center;
+  height: 36px;
+  font: 400 1.2rem Mukta;
+  border: 1px solid #696969;
+  border-radius: none;
+  background: #fff;
+  outline: none;
+  padding-left: 5px;
+  color:  #595959;
+  width: 452px;
+}

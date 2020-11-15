@@ -1,6 +1,18 @@
 .signup-container {
   display: flex;
 }
+form {
+  display: flex;
+}
+
+form {
+  text-align: left;
+  display: flex;
+}
+
+.block1 {
+  display: flex;
+}
 
 .image-area {
   width: 200px;
@@ -50,11 +62,6 @@
   border: none;
 }
 
-form {
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-}
 
 #form-label {
   font: 800 1.2rem Mukta;
@@ -77,7 +84,6 @@ form {
 
 #form-input::-webkit-input-placeholder {
   text-align: center;
-
 }
 
 .level {
@@ -205,7 +211,7 @@ datalist option:nth-child(3) {
   height: 40px;
   display: flex;
   align-items: center;
-  margin-left: 130px;
+  margin-left: 132px;
 }
 
 #newsletter input {
@@ -241,7 +247,7 @@ input[type="checkbox"]:checked::after {
 
 #submit{
   margin-top: 20px;
-  margin-left: 110px;
+  margin-left: 140px;
   width: 200px;
   height: 50px;
   font: 800 1.2rem Mukta;

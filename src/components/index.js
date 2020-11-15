@@ -1,5 +1,5 @@
-import Home from "./home";
-import Profile from "./profile";
-import SignUp from "./signup";
+import Field from "./field";
+import Select from "./select";
+import InputTags from "./input-tags";
 
-export { Home, Profile, SignUp };
+export { Field, Select, InputTags };
