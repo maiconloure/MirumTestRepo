@@ -62,7 +62,11 @@ const SignUp = ({ setData }) => {
             name="fname"
             id="simple"
             inputs={[
-              { name: "fname", placeholder: "Primeiro nome" },
+              {
+                name: "fname",
+                placeholder: "Primeiro nome",
+                rule: "^([a-zA-Z]{0,19})?$",
+              },
               { name: "lname", placeholder: "Sobrenome" },
             ]}
           />
@@ -154,12 +158,7 @@ const SignUp = ({ setData }) => {
             <p>Desejo receber novidades por e-mail.</p>
           </div>
 
-          <input
-            // onClick={(evt) => onFinish(evt)}
-            id="submit"
-            type="submit"
-            value="Salvar"
-          />
+          <input id="submit" type="submit" value="Salvar" />
         </div>
       </form>
     </main>

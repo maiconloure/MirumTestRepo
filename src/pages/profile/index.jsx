@@ -14,7 +14,18 @@ const Profile = ({ data }) => {
     "mais de 30 anos",
     "mais de 45 anos",
   ];
-  console.log(data);
+
+  const sendUser = () => {
+    const proxyurl = "https://cors-anywhere.herokuapp.com/";
+
+    const url = "http://example.com";
+    fetch(proxyurl + url, {
+      method: "POST",
+      body: JSON.stringify({ ...data, image: image }),
+    })
+      .then((response) => response.text())
+      .then((res) => console.log(res));
+  };
 
   return (
     <div className="profile-box">
@@ -62,7 +73,7 @@ const Profile = ({ data }) => {
           contatar ligue no telefone{" "}
           {data.telephone ? data.telephone : "(41) 99999-9999"}.
         </p>
-        <button type="submit" id="confirm-btn">
+        <button onClick={() => sendUser()} type="submit" id="confirm-btn">
           Confirmar
         </button>
       </div>

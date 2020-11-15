@@ -35,3 +35,11 @@
   outline: none;
   width: 430px;
 }
+
+
+#input-error {
+  position: absolute;
+  margin: 0;
+  font: 400 1rem Mukta;
+  color: #ff0000;
+}
