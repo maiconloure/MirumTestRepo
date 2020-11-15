@@ -3,23 +3,53 @@ import "./styles.css";
 
 const SignUp = () => {
   const [value, setValue] = useState();
+  const [image, setImage] = useState();
+  const [showAdress, setShowAdress] = useState(false);
+
+  const getImageFile = (event) => {
+    event.preventDefault();
+    if (event.target.files[0] !== undefined) {
+      var reader = new FileReader();
+      reader.onload = () => {
+        if (reader.readyState === 2) {
+          setImage(reader.result);
+        }
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  };
 
   return (
     <main className="signup-container">
       <figure className="image-area">
-        <p>Carregue sua foto</p>
+        <label htmlFor="image-upload">Carregue sua foto</label>
+        <input
+          type="file"
+          name="image-upload"
+          accept="image/*"
+          className="image-upload"
+          onChange={(event) => {
+            getImageFile(event);
+          }}
+        />
+        {image && <img id="image-uploaded" src={image} alt="Not found" />}
       </figure>
       <hr className="line" />
       <form>
         <div className="field">
-          <label htmlFor="name">Nome</label>
+          <label htmlFor="fname">Nome</label>
           <input
             id="form-input"
-            name="name"
+            name="fname"
             type="text"
             placeholder="Primeiro nome"
           ></input>
-          <input id="form-input" type="text" placeholder="Sobrenome"></input>
+          <input
+            id="form-input"
+            name="lname"
+            type="text"
+            placeholder="Sobrenome"
+          ></input>
           <br />
         </div>
 
@@ -37,9 +67,8 @@ const SignUp = () => {
               type="range"
               min="1"
               max="4"
-              value={value}
+              // value={value}
               onChange={(evt) => {
-                console.log(evt.target.value);
                 setValue(evt.target.value);
               }}
               list="ages"
@@ -63,7 +92,6 @@ const SignUp = () => {
               placeholder="david@example.com"
             ></input>
           </div>
-
           <div className="field">
             <label htmlFor="telephone">Telefone</label>
             <input
@@ -73,7 +101,6 @@ const SignUp = () => {
               placeholder="(41) 99999-9999"
             ></input>
           </div>
-
           <div className="field">
             <label htmlFor="state">Estado</label>
             <select name="state" id="form-select-input">
@@ -85,7 +112,7 @@ const SignUp = () => {
               <option value="ceara">Ceará</option>
               <option value="espirito-santo">Espírito Santo</option>
               <option value="goias">Goiás</option>
-              <option value="maranhao">Maranhão</option>
+              <option value="maranhao">Maranhão</option>setShowAdress
               <option value="mato-grosso">Mato Grosso</option>
               <option value="mato-grosso-do-sul">Mato Grosso Do Sul</option>
               <option value="minas-gerais">Minas Gerais</option>
@@ -107,17 +134,23 @@ const SignUp = () => {
               <option value="tocantins">Tocantins</option>
             </select>
           </div>
-
           <div className="field">
             <label htmlFor="country">País</label>
             <select name="country" id="form-select-input">
               <option value="brasil">Brasil</option>
             </select>
           </div>
-
           <div className="field">
             <label htmlFor="country">Endereço</label>
-            <select name="country" id="form-select-input">
+            <select
+              name="country"
+              id="form-select-input"
+              onChange={(evt) => {
+                if (evt.target.value) {
+                  setShowAdress(true);
+                }
+              }}
+            >
               <option value="select" disabled selected>
                 Selecione
               </option>
@@ -125,17 +158,24 @@ const SignUp = () => {
               <option value="company">Empresa</option>
             </select>
           </div>
-
+          {showAdress && (
+            <input
+              id="default"
+              name="street-address"
+              type="text"
+              placeholder="Digite aqui seu endereço"
+            />
+          )}
           <div className="field">
             <label htmlFor="tags">Interesses</label>
-            <input id="default" name="tags" type="text" placeholder=""></input>
+            <input id="default" name="tags" type="text"></input>
           </div>
         </div>
         <div id="newsletter">
           <input type="checkbox" name="newsletter" />
           <p>Desejo receber novidades por e-mail.</p>
         </div>
-        <button id="save-btn">Salvar</button>
+        <input id="submit" type="submit" value="Salvar" />
       </form>
     </main>
   );
