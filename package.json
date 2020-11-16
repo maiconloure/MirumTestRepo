@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.0",
     "components": "link:./src/components",
+    "utils": "link:./src/utils",
     "pages": "link:./src/pages",
     "eslint": "^7.13.0",
     "react": "^17.0.1",

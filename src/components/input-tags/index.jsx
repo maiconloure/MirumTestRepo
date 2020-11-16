@@ -1,21 +1,20 @@
-import React, { useState, useEffect } from "react";
-import "./styles.css";
+import React, { useState, useEffect } from 'react';
+import './styles.css';
 
 const InputTags = ({ label, name, interests, setInterests, inputs }) => {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
 
   useEffect(() => {
-    if (value.includes(",")) {
-      console.log(interests);
+    if (value.includes(',')) {
       const tags = value
-        .split(",")
+        .split(',')
         .map((tag) => tag.trim())
-        .filter((tag) => tag !== "");
+        .filter((tag) => tag !== '');
       setInterests(tags);
     } else {
       setInterests([]);
     }
-  }, [value]);
+  }, [setInterests, value]);
 
   const removeInterests = (index) => {
     interests.splice(index, 1);
@@ -25,7 +24,7 @@ const InputTags = ({ label, name, interests, setInterests, inputs }) => {
   return (
     <div>
       <div className="field">
-        <label htmlFor="tags">Interesses</label>
+        <label htmlFor={name}>{label}</label>
 
         {inputs.map(({ name, placeholder }, index) => (
           <input

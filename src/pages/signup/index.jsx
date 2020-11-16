@@ -1,9 +1,8 @@
-import React, { useState } from "react";
-import "./styles.css";
-import { Field, Select, InputTags } from "components";
-import { states } from "../../utils/data";
-import getImage from "../../utils/getImage";
-import { useHistory } from "react-router-dom";
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { Field, Select, InputTags } from 'components';
+import { states, getImage } from 'utils';
+import './styles.css';
 
 const SignUp = ({ setData }) => {
   let history = useHistory();
@@ -16,7 +15,7 @@ const SignUp = ({ setData }) => {
     const data = evt.target;
     const userData = {
       image: image,
-      name: data[1].value + " " + data[2].value,
+      name: data[1].value + ' ' + data[2].value,
       age: parseInt(data[3].value),
       email: data[4].value,
       telephone: data[5].value,
@@ -24,30 +23,26 @@ const SignUp = ({ setData }) => {
       country: data[7].options[data[7].selectedIndex].text,
       address: data[9].value,
       interests:
-        interests.slice(0, interests.length - 1).join(", ") +
-        " e " +
+        interests.slice(0, interests.length - 1).join(', ') +
+        ' e ' +
         interests.slice(interests.length - 1, interests.length),
       newsletter: data[10].checked,
     };
     setData(userData);
-    history.push("/profile");
+    history.push('/profile');
   };
 
   return (
     <main className="signup-container">
-      <form onSubmit={(evt) => onFinish(evt)}>
-        <div className="block1">
-          <figure className="image-area">
-            {image ? (
-              <label htmlFor="image-upload">Foto carregada!</label>
-            ) : (
-              <label htmlFor="image-upload">Carregue sua foto</label>
-            )}
+      <form className="signup-form" onSubmit={onFinish}>
+        <div className="image-container">
+          <figure className="image-box">
+            <label htmlFor="image-upload">{image ? 'Foto carregada!' : 'Carregue sua foto'}</label>
             <input
               type="file"
               name="image-upload"
               accept="image/*"
-              className="image-upload"
+              className="image-input"
               onChange={(event) => {
                 getImage(event, setImage);
               }}
@@ -56,22 +51,23 @@ const SignUp = ({ setData }) => {
 
           <hr className="line" />
         </div>
-        <div className="block2">
+
+        <div className="fields-container">
           <Field
             label="Nome"
             name="fname"
             id="simple"
             inputs={[
               {
-                name: "fname",
-                placeholder: "Primeiro nome",
-                rule: "^([a-zA-Z]{0,19})?$",
+                name: 'fname',
+                placeholder: 'Primeiro nome',
+                rule: '^([a-zA-Z]{0,19})?$',
               },
-              { name: "lname", placeholder: "Sobrenome" },
+              { name: 'lname', placeholder: 'Sobrenome' },
             ]}
           />
 
-          <div className="level">
+          <div className="age-slider">
             <label htmlFor="age">Idade</label>
             <div className="slider-range">
               <div className="guide-lines">
@@ -80,13 +76,7 @@ const SignUp = ({ setData }) => {
                 <hr id="age-line" />
                 <hr id="age-line" />
               </div>
-              <input
-                className="slider"
-                type="range"
-                min="0"
-                max="3"
-                list="ages"
-              ></input>
+              <input className="slider" type="range" min="0" max="3" list="ages"></input>
               <datalist id="ages">
                 <option value="0" label="13-19" />
                 <option value="1" label="20-29" />
@@ -100,28 +90,18 @@ const SignUp = ({ setData }) => {
             <Field
               label="E-mail"
               name="email"
-              inputs={[{ name: "email", placeholder: "david@example.com" }]}
+              inputs={[{ name: 'email', placeholder: 'david@example.com' }]}
             />
 
             <Field
               label="Telefone"
               name="telephone"
-              inputs={[{ name: "telephone", placeholder: "(41) 99999-9999" }]}
+              inputs={[{ name: 'telephone', placeholder: '(41) 99999-9999' }]}
             />
 
-            <Select
-              label="Estado"
-              name="state"
-              defaultSelect="Paraná"
-              options={states}
-            />
+            <Select label="Estado" name="state" defaultSelect="Paraná" options={states} />
 
-            <Select
-              label="País"
-              name="country"
-              defaultSelect="Brasil"
-              options={["Brasil"]}
-            />
+            <Select label="País" name="country" defaultSelect="Brasil" options={['Brasil']} />
 
             <Select
               label="Endereço"
@@ -132,7 +112,7 @@ const SignUp = ({ setData }) => {
                   setShowAdress(true);
                 }
               }}
-              options={["Selecione", "Casa", "Empresa"]}
+              options={['Selecione', 'Casa', 'Empresa']}
             />
 
             {showAdress && (
@@ -147,14 +127,14 @@ const SignUp = ({ setData }) => {
             <InputTags
               label="Interesses"
               name="tags"
-              inputs={[{ name: "tags", placeholder: "" }]}
+              inputs={[{ name: 'tags', placeholder: '' }]}
               interests={interests}
               setInterests={setInterests}
             />
           </div>
 
           <div id="newsletter">
-            <input type="checkbox" name="newsletter" />
+            <input id="checkbox" type="checkbox" name="newsletter" />
             <p>Desejo receber novidades por e-mail.</p>
           </div>
 

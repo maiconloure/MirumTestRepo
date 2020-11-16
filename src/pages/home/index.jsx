@@ -1,9 +1,9 @@
-import React from "react";
-import "./styles.css";
+import React from 'react';
+import './styles.css';
 
 const Home = ({ history }) => (
-  <div class="homepage">
-    <button id="signup-btn" onClick={() => history.push("/signup")}>
+  <div className="home">
+    <button id="signup-btn" onClick={() => history.push('/signup')}>
       Cadastro
     </button>
   </div>

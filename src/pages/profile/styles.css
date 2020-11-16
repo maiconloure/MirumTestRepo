@@ -3,7 +3,6 @@
   height: 700px;
   border: 1px solid #696969;
   display: flex;
-
 }
 
 .user {
@@ -44,7 +43,6 @@
 	opacity: 0;
 	overflow: hidden;
 	position: absolute;
-  /* z-index: 1; */
   top: 180px;
   cursor: pointer;
 }

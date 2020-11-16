@@ -1,58 +1,49 @@
 .signup-container {
   display: flex;
 }
-form {
-  display: flex;
-}
 
-form {
+.signup-form {
+  display: flex;
   text-align: left;
   display: flex;
 }
 
-.block1 {
+.image-container {
   display: flex;
 }
 
-.image-area {
+.image-box {
   width: 200px;
   height: 140px;
-  background: #D3D3D3;
+  background: #d3d3d3;
   border-radius: 10px;
   border: 1px solid #696969;
-  color: #4F4F4F;
+  color: #4f4f4f;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.image-area p {
+.image-box p {
   font: 800 1.3rem Mukta;
 }
 
-.image-area label{
+.image-box label {
   font: 800 1.2rem Mukta;
   color: #696969;
   position: absolute;
   z-index: 1;
 }
 
-.image-upload {
+.image-input {
   width: 200px;
   height: 140px;
-	opacity: 0;
-	overflow: hidden;
-	position: absolute;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
   z-index: 1;
   cursor: pointer;
-}
-
-#image-uploaded {
-  overflow: hidden;
-  border-radius: 10px;
-  width: 200px;
-  height: 140px;
 }
 
 .line {
@@ -61,7 +52,6 @@ form {
   height: 600px;
   border: none;
 }
-
 
 #form-label {
   font: 800 1.2rem Mukta;
@@ -86,12 +76,12 @@ form {
   text-align: center;
 }
 
-.level {
+.age-slider {
   position: relative;
   display: flex;
 }
 
-.level label {
+.age-slider label {
   width: 120px;
   margin-right: 16px;
   font: 800 1.2rem Mukta;
@@ -101,6 +91,7 @@ form {
 
 .slider {
   -webkit-appearance: none;
+  appearance: none;
   width: 450px;
   height: 1px;
   background: #696969;
@@ -114,16 +105,17 @@ form {
   -webkit-appearance: none;
   appearance: none;
   width: 18px;
-  height: 35px;
-  background: #C0C0C0;
+  height: 36px;
+  background: #c0c0c0;
   border: 1px solid #696969;
   cursor: pointer;
+  align-items: center;
 }
 
 .slider::-moz-range-thumb {
   width: 25px;
   height: 25px;
-  background: #4CAF50;
+  background: #4caf50;
   cursor: pointer;
 }
 
@@ -143,7 +135,7 @@ datalist option:nth-child(1) {
 }
 datalist option:nth-child(2) {
   margin-right: 100px;
-} 
+}
 datalist option:nth-child(3) {
   margin-right: 46px;
 }
@@ -174,38 +166,13 @@ datalist option:nth-child(3) {
   background: #fff;
   outline: none;
   padding-left: 5px;
-  color:  #595959;
+  color: #595959;
   width: 452px;
 }
-
 
 .fields {
   text-align: right;
 }
-
-.field {
-  display: flex;
-  align-items: center;
-  margin: 20px 0;
-}
-.field label {
-  width: 120px;
-  margin-right: 16px;
-  font: 800 1.2rem Mukta;
-  color: #696969;
-  text-align: right;
-}
-
-#default {
-  height: 24px;
-  font: 400 1.2rem Mukta;
-  border: 1px solid #696969;
-  border-radius: none;
-  padding: 5px 10px;
-  outline: none;
-  width: 430px;
-}
-
 
 #newsletter {
   height: 40px;
@@ -221,19 +188,23 @@ datalist option:nth-child(3) {
 #newsletter p {
   font: 400 1rem Mukta;
   color: #696969;
-
 }
 
-input[type="checkbox"]::before {
-  content: " ";
+#checkbox {
+  width: 16px;
+  height: 16px;
+}
+
+#checkbox::before {
+  content: ' ';
   width: 16px;
   height: 16px;
   position: absolute;
-  background-color: #D3D3D3;
+  background-color: #d3d3d3;
   border: 1px solid #696969;
 }
-input[type="checkbox"]:checked::after {
-  content: " ";
+#checkbox:checked::after {
+  content: ' ';
   width: 0.2rem;
   height: 0.6rem;
   margin-left: 0.4rem;
@@ -245,26 +216,16 @@ input[type="checkbox"]:checked::after {
   transform: rotate(45deg);
 }
 
-#submit{
+#submit {
   margin-top: 20px;
   margin-left: 140px;
   width: 200px;
   height: 50px;
   font: 800 1.2rem Mukta;
-  background: #D3D3D3;
+  background: #d3d3d3;
   border-radius: 10px;
   border: 1px solid #696969;
-  color: #4F4F4F;
+  color: #4f4f4f;
   cursor: pointer;
   outline: none;
-}
-
-@media (max-width: 550px) and (max-height: 550px) {
-  .signup-container {
-    flex-direction: column;
-  }
-
-  .line {
-    display: none;
-  }
 }

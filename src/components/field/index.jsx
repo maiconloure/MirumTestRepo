@@ -1,13 +1,7 @@
-import React, { useState } from "react";
-import "./styles.css";
+import React, { useState } from 'react';
+import './styles.css';
 
-const Field = ({
-  label,
-  name,
-  id = "default",
-  onChange = () => {},
-  inputs,
-}) => {
+const Field = ({ label, name, id = 'default', inputs }) => {
   const [inputError, setInputError] = useState(false);
 
   const validInput = (evt, rule) => {
@@ -34,8 +28,8 @@ const Field = ({
               />
               {inputError && (
                 <p id="input-error">
-                  {label} deve conter apenas caracteres alfabéticos e não deve
-                  exceder 20 caracteres.
+                  {label} deve conter apenas caracteres alfabéticos e não deve exceder 20
+                  caracteres.
                 </p>
               )}
             </div>

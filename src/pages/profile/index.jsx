@@ -1,30 +1,23 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
-import getImage from "../../utils/getImage";
-
-import "./styles.css";
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import getImage from '../../utils/getImage';
+import './styles.css';
 
 const Profile = ({ data }) => {
-  const [image, setImage] = useState(data.image);
   let history = useHistory();
-
-  const ages = [
-    "mais de 13 anos",
-    "mais de 20 anos",
-    "mais de 30 anos",
-    "mais de 45 anos",
-  ];
+  const [image, setImage] = useState(data.image);
+  const ages = ['mais de 13 anos', 'mais de 20 anos', 'mais de 30 anos', 'mais de 45 anos'];
 
   const sendUser = () => {
-    const proxyurl = "https://cors-anywhere.herokuapp.com/";
-
-    const url = "http://example.com";
+    const proxyurl = 'https://cors-anywhere.herokuapp.com/';
+    const url = 'http://example.com';
     fetch(proxyurl + url, {
-      method: "POST",
+      method: 'POST',
       body: JSON.stringify({ ...data, image: image }),
     })
       .then((response) => response.text())
-      .then((res) => console.log(res));
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -33,11 +26,9 @@ const Profile = ({ data }) => {
         <div>
           <img
             src={
-              image
-                ? image
-                : "https://cdn0.iconfinder.com/data/icons/user-people-3/48/6-512.png"
+              image ? image : 'https://cdn0.iconfinder.com/data/icons/user-people-3/48/6-512.png'
             }
-            alt=""
+            alt="user"
           />
 
           <label id="edit-image" htmlFor="image-upload">
@@ -52,7 +43,7 @@ const Profile = ({ data }) => {
               getImage(event, setImage);
             }}
           />
-          <button id="edit-user" onClick={() => history.push("/signup")}>
+          <button id="edit-user" onClick={() => history.push('/signup')}>
             Editar perfil
           </button>
         </div>
@@ -61,17 +52,13 @@ const Profile = ({ data }) => {
 
       <div className="details">
         <p>
-          Eu sou o <b>{data.name !== " " ? data.name : "Nome Completo"}</b> e eu
-          tenho
+          Eu sou o <b>{data.name !== ' ' ? data.name : 'Nome Completo'}</b> e eu tenho
           <b> {ages[data.age]} </b> e você pode enviar e-mails para
-          <b> {data.email ? data.email : "david@example.com"}</b>. Eu moro no
-          estado do <b>{data.state}</b>.{" "}
-          {data.interests &&
-            data.interests.length > 3 &&
-            `Eu gosto de ${data.interests}.`}{" "}
-          {data.newsletter && "Por-favor me envie newsletters."} Para me
-          contatar ligue no telefone{" "}
-          {data.telephone ? data.telephone : "(41) 99999-9999"}.
+          <b> {data.email ? data.email : 'david@example.com'}</b>. Eu moro no estado do{' '}
+          <b>{data.state}</b>.{' '}
+          {data.interests && data.interests.length > 3 && `Eu gosto de ${data.interests}.`}{' '}
+          {data.newsletter && 'Por-favor me envie newsletters.'} Para me contatar ligue no telefone{' '}
+          {data.telephone ? data.telephone : '(41) 99999-9999'}.
         </p>
         <button onClick={() => sendUser()} type="submit" id="confirm-btn">
           Confirmar
